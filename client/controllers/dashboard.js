@@ -46,4 +46,7 @@ miniMeanStore.controller('DashController', function($scope, ProductFactory, Cust
   }
 
   $scope.displayPicNum = 4;
+  $scope.updatePicNum = function(){
+    $scope.displayPicNum += 4;
+  }
 }); //closes DashController
