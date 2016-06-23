@@ -7,14 +7,14 @@
   <div class="row">
     <div class="col-md-2">
       <form>
-        <input type='text' placeholder='search...' />
+        <input type='text' placeholder='search...' ng-model="searchProducts"/>
         <br />
         <button>Filter</button>
       </form>
     </div>
     <div class="col-md-10">
 
-      <div class="picdiv" ng-repeat="product in products | orderBy: '-quantity' | limitTo: displayPicNum ">
+      <div class="picdiv" ng-repeat="product in products | filter: searchProducts | orderBy: '-quantity' | limitTo: displayPicNum ">
         <img src="{{product.url}}"/>
         <h5 ng-bind="product.name"></h5>
         <p>(<span ng-bind="product.quantity"></span> left)</p>

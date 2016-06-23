@@ -8,7 +8,7 @@
       <br />
       <br />
       <form>
-        <input type='text' placeholder='search...' />
+        <input type='text' placeholder='search...' ng-model="searchProducts.name" />
         <br />
         <button>Filter</button>
       </form>
@@ -38,7 +38,7 @@
     </div> <!--closes col-md-2 -->
     <div class="col-md-10">
 
-        <div class="picdiv" ng-repeat="product in products">
+        <div class="picdiv" ng-repeat="product in products | filter: searchProducts">
           <img src="{{product.url}}"/>
           <h5 ng-bind="product.name"></h5>
           <p>(<span ng-bind="product.quantity"></span> left)</p>
