@@ -1,0 +1,34 @@
+img {
+  width: 100%;
+}
+h5 {
+  text-align: center;
+}
+.piccolumn p {
+  text-align: center;
+}
+.showmore p{
+  text-align: right;
+}
+.picdiv {
+  width: 200px;
+  height: 220px;
+  display: inline-block;
+  padding: 5px;
+}
+.picdiv img {
+
+  width: 100%;
+}
+.picdiv p {
+  text-align: center;
+}
+.right {
+  margin-left: 970px;
+}
+.aqua {
+  background-color: aqua;
+}
+.orange {
+  color: orange;
+}

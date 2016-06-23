@@ -1,0 +1,49 @@
+
+
+<div ng-controller="OrdersController">
+  <h3>Add a new order</h3>
+  <form role="form" class="form-inline">
+      <div class="form-group">
+        <label for="customername">Customer Name: </label>
+        <select name="customername" ng-model="newOrder.name" ng-options="customer.name for customer in customers">
+          <option ng-bind="customer.name"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Order: </label>
+        <select name="quantity" ng-model="newOrder.quantity" ng-options="order for order in orderQuantity">
+          <option ng-bind="order"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="items" ng-model="newOrder.product" ng-options="item.name for item in orderItems">
+          <option ng-bind="item.name"></option>
+        </select>
+      </div>
+      <button class="btn btn-success" ng-click="placeOrder()">Order</button>
+  </form>
+  <br />
+  <p class="orange" ng-if="message" ng-bind="message"></p>
+  <br />
+  <form class="right">
+    <input type="text" placeholder="search name..." ng-model="filter_order.name"/>
+  </form>
+  <br />
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th>Name</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Date</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in placedOrders | filter: filter_order">
+        <td ng-bind="order.name"></td>
+        <td ng-bind="order.product"></td>
+        <td ng-bind="order.quantity"></td>
+        <td ng-bind="order.createdAt"></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

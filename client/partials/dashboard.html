@@ -1,0 +1,55 @@
+
+<div ng-controller="DashController">
+
+
+  <h2>DASHBOARD</h2>
+  <br />
+  <div class="row">
+    <div class="col-md-2">
+      <form>
+        <input type='text' placeholder='search...' />
+        <br />
+        <button>Filter</button>
+      </form>
+    </div>
+    <div class="col-md-10">
+
+      <div class="picdiv" ng-repeat="product in products | orderBy: '-quantity' | limitTo: displayPicNum ">
+        <img src="{{product.url}}"/>
+        <h5 ng-bind="product.name"></h5>
+        <p>(<span ng-bind="product.quantity"></span> left)</p>
+      </div>
+
+      <div class="row showmore">
+        <p><a href='#/' ng-click='updatePicNum()'>show more...</a></p>
+      </div>
+      <h4>Recent orders</h4>
+        <div ng-repeat="order in orders | orderBy: '-_id' | limitTo: 3">
+          <p>
+            <span ng-bind="order.name"></span> purchased <span ng-bind="order.quantity"></span> <span ng-bind="order.product"></span><span ng-bind="order.createdAt"></span>
+          </p>
+        </div>
+        <a  href='#'>show all orders...</a>
+        <h4>New customers</h4>
+          <div ng-repeat="customer in customers | orderBy: '-_id' | limitTo: 3">
+          <p> <span ng-bind="customer.name"></span> joined the store. (
+              <span ng-bind='customer.timeHere.weeks' ng-if='customer.timeHere.weeks'></span><span ng-if="customer.timeHere.weeks"> weeks </span>
+              <span ng-if='customer.timeHere.days' ng-bind='customer.timeHere.days'></span><span ng-if='customer.timeHere.days'> days </span>
+              <span ng-bind='customer.timeHere.hours' ng-if='customer.timeHere.hours'></span><span ng-if='customer.timeHere.hours'> hours </span>
+              <span ng-bind='customer.timeHere.minutes' ng-if="customer.timeHere.minutes"></span><span ng-if='customer.timeHere.minutes'> minutes </span> ago. )
+
+            </p>
+          </div>
+        <!-- <p>
+          Trey Villafane joined the store. (5 days ago)
+        </p>
+        <p>
+          Michael Choi joined the store. (2 weeks ago)
+        </p>
+        <p>
+          Homer Simpson joined the store. (3 weeks ago)
+        </p> -->
+        <a href="#">show all customers...</a>
+    </div>
+  </div>
+</div>
