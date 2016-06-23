@@ -38,7 +38,7 @@
     </div> <!--closes col-md-2 -->
     <div class="col-md-10">
 
-        <div class="picdiv" ng-repeat="product in products | filter: searchProducts">
+        <div class="picdiv" ng-repeat="product in products | filter: searchProducts | limitTo: prodToShow ">
           <img src="{{product.url}}"/>
           <h5 ng-bind="product.name"></h5>
           <p>(<span ng-bind="product.quantity"></span> left)</p>
@@ -48,7 +48,8 @@
 
 
       <div class="showmore">
-        <p><a href="#">show more...</a></p>
+        <p><a href="#/products" ng-click="moreProducts()" ng-show="moreToShow">show more...</a></p>
+        <p><a href="#/products" ng-click="collapseProducts()" ng-hide="moreToShow">collapse products...</a></p>
       </div>
     </div><!--closes col-md-10 -->
 

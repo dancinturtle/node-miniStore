@@ -2,6 +2,12 @@ miniMeanStore.controller('ProductsController', function($scope, ProductFactory){
 
   ProductFactory.index(function(data){
     $scope.products = data;
+    if($scope.products.length > 15){
+      $scope.moreToShow = true;
+    }
+    else{
+      $scope.moreToShow = false;
+    }
   })
 
 
@@ -21,5 +27,16 @@ miniMeanStore.controller('ProductsController', function($scope, ProductFactory){
     ProductFactory.index(function(data){
       $scope.products = data;
     })
+  }
+  $scope.prodToShow = 15;
+  $scope.moreProducts = function(){
+    $scope.prodToShow += 15;
+    if($scope.prodToShow >= $scope.products.length){
+      $scope.moreToShow = false;
+    }
+  }
+  $scope.collapseProducts = function(){
+    $scope.prodToShow = 15;
+    $scope.moreToShow = true;
   }
 }); //closes productsController
