@@ -4,6 +4,10 @@ miniMeanStore.controller('DashController', function($scope, ProductFactory, Cust
   })
   OrderFactory.index(function(data){
     $scope.orders = data;
+    for(var i=0; i<$scope.orders.length; i++){
+      var date = new Date($scope.orders[i].createdAt);
+      $scope.orders[i].createdAt = date.toDateString();
+    }
   })
   CustomerFactory.index(function(data){
     $scope.customers = data;
@@ -49,4 +53,18 @@ miniMeanStore.controller('DashController', function($scope, ProductFactory, Cust
   $scope.updatePicNum = function(){
     $scope.displayPicNum += 4;
   }
+  $scope.show = true;
+  $scope.orderNum = 3;
+  $scope.updateOrderNum = function(){
+    if($scope.show){
+      $scope.orderNum = $scope.orders.length;
+      $scope.show = false;
+    }
+    else{
+      $scope.orderNum = 3;
+      $scope.show = true;
+    }
+  }
+
+
 }); //closes DashController
