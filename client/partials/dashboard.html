@@ -32,7 +32,7 @@
         <a  href='#/' ng-click='updateOrderNum()' ng-show="show">show all orders...</a>
         <a href='#/' ng-click='updateOrderNum()' ng-hide="show">collapse orders...</a>
         <h4>New customers</h4>
-          <div ng-repeat="customer in customers | orderBy: '-_id' | limitTo: 3">
+          <div ng-repeat="customer in customers | orderBy: '-_id' | limitTo: custNum">
           <p> <span ng-bind="customer.name"></span> joined the store. (
               <span ng-bind='customer.timeHere.weeks' ng-if='customer.timeHere.weeks'></span><span ng-if="customer.timeHere.weeks"> weeks </span>
               <span ng-if='customer.timeHere.days' ng-bind='customer.timeHere.days'></span><span ng-if='customer.timeHere.days'> days </span>
@@ -41,16 +41,9 @@
 
             </p>
           </div>
-        <!-- <p>
-          Trey Villafane joined the store. (5 days ago)
-        </p>
-        <p>
-          Michael Choi joined the store. (2 weeks ago)
-        </p>
-        <p>
-          Homer Simpson joined the store. (3 weeks ago)
-        </p> -->
-        <a href="#/">show all customers...</a>
+        <a href="#/" ng-click='updateCustNum()' ng-show="showCust">show all customers...</a>
+        <a href="#/" ng-click='updateCustNum()' ng-hide="showCust">collapse customers...</a>
+
     </div>
   </div>
 </div>

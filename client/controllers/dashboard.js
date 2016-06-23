@@ -65,6 +65,18 @@ miniMeanStore.controller('DashController', function($scope, ProductFactory, Cust
       $scope.show = true;
     }
   }
+  $scope.showCust = true;
+  $scope.custNum = 3;
+  $scope.updateCustNum = function(){
+    if($scope.showCust){
+      $scope.custNum = $scope.customers.length;
+      $scope.showCust = false;
+    }
+    else{
+      $scope.custNum = 3;
+      $scope.showCust = true;
+    }
+  }
 
 
 }); //closes DashController
