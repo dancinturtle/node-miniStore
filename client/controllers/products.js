@@ -29,14 +29,19 @@ miniMeanStore.controller('ProductsController', function($scope, ProductFactory){
     })
   }
   $scope.prodToShow = 15;
+  $scope.atEnd = false;
   $scope.moreProducts = function(){
     $scope.prodToShow += 15;
     if($scope.prodToShow >= $scope.products.length){
       $scope.moreToShow = false;
+      if($scope.prodToShow > 15){
+        $scope.atEnd = true;
+      }
     }
   }
   $scope.collapseProducts = function(){
     $scope.prodToShow = 15;
     $scope.moreToShow = true;
+    $scope.atEnd = false;
   }
 }); //closes productsController
